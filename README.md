@@ -73,4 +73,8 @@ This somewhat crude example should give you an idea of how to create a full scal
 
 * Devs have no ability to add their own javascript as source. Might be a useful feature needed to support more complex input functions.
 
+## Demo
 
+The current demo is [here](https://brolita.shinyapps.io/campfire/)
+
+You can host your apps at [shinyapps.io](https://shinyapps.io/) for free! Though for full scale deployments, you will most likely need to host the server elsewhere.
