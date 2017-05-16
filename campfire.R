@@ -94,7 +94,7 @@ igraph_to_plotly <- function(G, L, hover = "text", edgeColor = "#030303") {
 
 # server maps input to output
 settings = createMultipageServer(
-  controller = viewer("Controller",
+  list(
     selectInput(inputId = "edges",
       label = "Select graph:",
       choices = c('Genre', 'Platform'),
@@ -126,7 +126,6 @@ settings = createMultipageServer(
     return(igraph_to_plotly(G=g, L=layout) %>% config(displayModeBar = F))
   }
 )
-
 
 shinyApp(ui = settings$ui, server = settings$server)
 
