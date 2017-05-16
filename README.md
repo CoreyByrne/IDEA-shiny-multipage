@@ -30,7 +30,7 @@ createMultipageServer <- function(
 
 `Controller` is a list of shiny inputs. See the [Shiny Documentation](https://shiny.rstudio.com/reference/shiny/latest/) for a list of existing inputs. 
 
-Additional arguments are functions which return `plotly` objects. The name of the argument will be used as the "viewer name." Each function takes a "shiny input", which behaves as a normal reactive input object. See [an example from the Shiny Docs](https://shiny.rstudio.com/articles/build.html). *Please note:* You do NOT have to call a render method. Simply return the plot.
+Additional arguments are functions which return `plotly` objects. The name of the argument will be used as the "viewer name." Each function takes a "shiny input", which behaves as a normal reactive input object. See [an example of reactive inputs from the Shiny Docs](https://shiny.rstudio.com/articles/build.html). *Please note:* You do NOT have to call a render method. Simply return the plot.
 
 ## Example
 
@@ -63,11 +63,11 @@ This somewhat crude example should give you an idea of how to create a full scal
 
 ### Bugs
 
-* Currently, once a server is launched, the `controlledInput` object is not initalized to have the correct inital values. Once a controller connected once, the bug subsides as long as the server stays up
+* Currently, once a server is launched, the `controlledInput` object is not initialized to have the correct initial values. Once a controller has connected once, the bug subsides for as long as the server stays up
 
 ### Features
 
-* There is currently no controller locking, to prevent multiple controllers. This means that multiple controller will "fight" to have the correct value, and can cause a "flickering" effect.
+* There is currently no controller locking, to prevent multiple controllers. This means that multiple controller will "fight" to have the correct value, and can cause a "flickering" effect, as shiny attempts to take on the value of the controller which is different.
 
 * Only plotly renders are supported, however the implentation could be reworked to allow the plot functions to call their own render methods. No research has been done on this end.
 
@@ -75,6 +75,6 @@ This somewhat crude example should give you an idea of how to create a full scal
 
 ## Demo
 
-The current demo is [here](https://brolita.shinyapps.io/campfire/)
+The current demo for the campfire is [here](https://brolita.shinyapps.io/campfire/).
 
 You can host your apps at [shinyapps.io](https://shinyapps.io/) for free! Though for full scale deployments, you will most likely need to host the server elsewhere.

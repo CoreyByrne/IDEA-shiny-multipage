@@ -95,16 +95,19 @@ igraph_to_plotly <- function(G, L, hover = "text", edgeColor = "#030303") {
 # server maps input to output
 settings = createMultipageServer(
   list(
+	# input which edges we want to draw
     selectInput(inputId = "edges",
       label = "Select graph:",
       choices = c('Genre', 'Platform'),
       selected = 'Genre'),
+	# input the number of games we want to render
     sliderInput(inputId = "games", 
       label = "Number of games:",
       min = 4, 
       max = 100, 
       value = 20)
   ),
+  # function which returns the wall plot
   Wall = function(input) { 
     vgsmall <- head(vgsales, input$games)
     
@@ -116,6 +119,7 @@ settings = createMultipageServer(
       yaxis = blankAxis
     ) %>% config(displayModeBar = F))
   },
+  # function which returns floor plot
   Floor = function(input) {
     # make a graph using input
     vgsmall <- head(vgsales, input$games)

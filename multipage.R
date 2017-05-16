@@ -30,14 +30,18 @@ createMultipageServer <- function(controllerArgs, ...) {
 	
 	# server maps input to output
 	server <- function(input, output, session) {
+		# we will observe every input change
 		observe({
+			# for each option in out inputs
 			for(opt in names(input)) {
+				# we ignore non-viewers 
 				if(opt != "viewer" && input$viewer == "Controller") {
 					controlledInput[[opt]] = input[[opt]]
 				}
 			}
 		})
-	
+		# binding the kwargs to an output render. Here is where you would
+		# update the render method
 		for(o in names(args)) {
 			output[[o]] <- eval(parse(text = paste0("renderPlotly({
 				args$", o, "(controlledInput)
@@ -45,6 +49,7 @@ createMultipageServer <- function(controllerArgs, ...) {
 		}
 	}
 
+	# here we create containers for the plot viewers so we can hide or show them
 	e <- "div(id = \"viewers\", class = \"container\", controller"
 	for(i in 1:length(names(args))) {
 		e <- paste0(e, ", plotViewer(names(args)[[", i, "]])")
