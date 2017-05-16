@@ -10,10 +10,10 @@
 
 ```
 settings = createMultipageServer(
-	list(
-		...
-	),
-	...
+    list(
+        ...
+    ),
+    ...
 )
 
 shinyApp(ui = settings$ui, server = settings$server)
@@ -23,8 +23,8 @@ shinyApp(ui = settings$ui, server = settings$server)
 
 ```
 createMultipageServer <- function(
-	controller,
-	...
+    controller,
+    ...
 )
 ```
 
@@ -43,15 +43,15 @@ library(shiny)
 source("multipage.R")
 
 settings = createMultipageServer(
-	list(
-		selectInput(inputId = "example",
-			label = "Make this appear in other view:",
-			choices = c('Choice 1', 'Choice 2'),
-			selected = 'Choice 1')
-	),
-	Viewer = function(input) {
-		return(plot_ly() %>% layout(title=input$example))
-	}
+    list(
+        selectInput(inputId = "example",
+            label = "Make this appear in other view:",
+            choices = c('Choice 1', 'Choice 2'),
+            selected = 'Choice 1')
+    ),
+    Viewer = function(input) {
+        return(plot_ly() %>% layout(title=input$example))
+    }
 )
 
 shinyApp(ui = settings$ui, server = settings$server)
